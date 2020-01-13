@@ -1,0 +1,23 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © weeklystockcharts
+
+//@version=4
+// Candle Type Pine Script
+// (c)2018 Crinklebine Crinklebine.com
+study("Candle Type w/2Up + 2Dn", overlay=true, precision=0)
+
+// check for candle type 1 (inside candle) and plot an identifier
+barResult1 = high <= high[1] and low >= low[1]
+plotchar(barResult1, title="Bar Type 1 Label", char="1", location=location.belowbar, color=#0080FF)
+
+// check for candle type 2 (up candle) and plot an identifier
+barResult2Up = (high > high[1]) and not (low < low[1])
+plotchar(barResult2Up, title="Bar Type 2Up Label", text="2Up", location=location.belowbar, color=#0080FF)
+
+// check for candle type 2 (down candle) and plot an identifier
+barResult2Dn = (low < low[1]) and not (high >high[1])
+plotchar(barResult2Dn, title="Bar Type 2Dn Label", text ="2Dn", location=location.belowbar, color=#0080FF)
+
+// check for candle type 3 (engulfing candle) and plot an identifier
+barResult3 = high > high[1] and low < low[1]
+plotchar(barResult3, title="Bar Type 3 Label", char="3", location=location.belowbar, color=#0080FF)
